@@ -1,17 +1,12 @@
 # This Python script contains all the machine dependent settings
 # needed during the build process.
 
-# Tested up to Mac OS 10.13 "High Sierra"
-# building for python 2.7, with all dependencies installed using MacPorts
-# 
-# Ports+variants to install via MacPorts (and @version used in this build):
-#   py27-spyder @2.3.8_0
-#   py27-Pillow @3.2.0_0 (replaces PIL)
-#   blitz@0.10_4+gcc5
-#   boost @1.66.0_0+no_single+no_static+python27
-#   lapack @3.7.1_0+gfortran
-#   llvm-3.3 @3.3_10
-#   scons @3.0.1_0
+# installation on python 3 with brew
+# brew install scons
+# brew install blitz
+# brew install lapack
+# brew install boost-python3
+
 #
 # All ports built for x86_64 as per MacPorts default on recent 64-bit machines
 
