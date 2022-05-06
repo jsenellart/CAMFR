@@ -81,7 +81,7 @@ def _create_window_and_draw(drawobject):
     window.pack(fill=BOTH, expand=YES)
 
     def display(value):
-	print value
+       print(value)
 
     c = PlotCanvas( window, 500, 500, zoom=1, select=display,
                     relief=SUNKEN,border=2)
@@ -384,11 +384,11 @@ def _output_pic(pic, filename=0):
         script_path = os.path.abspath(script)
         pic_path    = os.path.dirname(script_path)+slash+filename
         if not suffix in formats:
-            print "File format not supported. Defaulting to jpg."
+            print("File format not supported. Defaulting to jpg.")
             pic_path += ".jpg"
 
         pic.save(pic_path)    
-        print "Created", pic_path
+        print("Created", pic_path)
     else:
         root     = Tkinter.Tk()    
         canvas   = Tkinter.Canvas(width=pic.size[0], height=pic.size[1])
@@ -544,7 +544,7 @@ def _output_movie(movie, filename):
         if '.' in filename:
             (name, suffix) = os.path.splitext(filename)
             if suffix != '.gif':
-                print "File format not supported. Defaulting to gif."
+                print("File format not supported. Defaulting to gif.")
                 filename = filename[:filename.index('.')] + ".gif"
         else:
             filename += ".gif"
@@ -557,7 +557,7 @@ def _output_movie(movie, filename):
         
         gifmaker.makedelta(fp, movie)
         fp.close()
-        print  "Created", userpath
+        print("Created", userpath)
 
     else:
         root = Tkinter.Tk()
@@ -669,9 +669,9 @@ def plot_neff(waveguide):
     x,y = [],[]
     
     for i in range(waveguide.N()):
-	n = waveguide.mode(i).n_eff()
-	x.append(n.real)
-        y.append(n.imag)
+       n = waveguide.mode(i).n_eff()
+       x.append(n.real)
+       y.append(n.imag)
 
     scatter_plot(x,y)
 
@@ -748,7 +748,7 @@ def plot_n_stack(stack, r_x, r_z, r_y=0, filename=0, colormap=whiteblack):
     except TypeError:
       rzrange = True
     if rxrange and ryrange and rzrange:
-      print "Error: plot_n_stack can only make cross sections."
+      print("Error: plot_n_stack can only make cross sections.")
 
     n = np.zeros([len(ax1),len(ax2)],float)
     if rzrange:
@@ -786,7 +786,7 @@ def plot_arrow_stack(stack, r_x, r_z, r_y = 0, filename=0):
     except TypeError:
       rzrange = True
     if rxrange and ryrange and rzrange:
-      print "Error: plot_n_stack can only make cross sections"
+      print("Error: plot_n_stack can only make cross sections")
     px   = np.zeros([len(r_x),len(r_z)], float)
     py   = np.zeros([len(r_y),len(r_z)], float)
     pz   = np.zeros([len(r_x),len(r_z)], float)
@@ -836,7 +836,7 @@ def plot_n(o, r1, r2=0, r3=0, filename=0, colormap=whiteblack):
     elif type(o) == Section:
         plot_n_section(o, r1, r2, filename, colormap)
     else:
-        print "Unsupported argument for plot_n."
+        print("Unsupported argument for plot_n.")
 
 
 
@@ -894,7 +894,7 @@ def plot_field_stack(stack, component, r_x, r_z, r_y = 0, filename=0,
     except TypeError:
       rzrange = True
     if rxrange and ryrange and rzrange:
-      print "Error: plot_n_stack can only make cross sections"
+      print("Error: plot_n_stack can only make cross sections")
 
     f = np.zeros([len(ax1),len(ax2)], float)
     if rzrange:
@@ -950,11 +950,11 @@ def plot_field_stack(stack, component, r_x, r_z, r_y = 0, filename=0,
 def _calc_field_stack(f, stack, r_x, r_y, component, r_z=0):
 
    if type(r_z)!=np.ndarray or asarray(r_z).shape[0]==1:
-        # 2D 
- 	for x in range(len(r_x)):
-		for z in range(len(r_y)):
-			f[x,z] = component(stack.field(Coord(r_x[x],0,r_y[z])))
-			
+         # 2D 
+     for x in range(len(r_x)):
+         for z in range(len(r_y)):
+             f[x,z] = component(stack.field(Coord(r_x[x],0,r_y[z])))
+
    elif len(r_x)==1:
     for y in range(len(r_y)):
         for z in range(len(r_z)):
@@ -979,11 +979,11 @@ def _calc_field_stack(f, stack, r_x, r_y, component, r_z=0):
 def _calc_n_stack(n, stack, r_x, r_y, r_z=0):
 
     if type(r_z)!=ndarray or asarray(r_z).shape[0]==1:
-    	# 2D
-	for x in range(len(r_x)):
-		for z in range(len(r_y)):
-			n[x,z] = stack.n(Coord(r_x[x],0,r_y[z])).real
-			
+        # 2D
+        for x in range(len(r_x)):
+            for z in range(len(r_y)):
+               n[x,z] = stack.n(Coord(r_x[x],0,r_y[z])).real
+
     elif len(r_x)==1:
       for y in range(len(r_y)):
          for z in range(len(r_z)):
@@ -1054,7 +1054,7 @@ def _calc_arrow_stack(px, pz, stack, r_x, r_z):
                            -f.H1().conjugate()*f.E2()).real
 
     else:
-        print "Error: no polarisation defined."
+        print("Error: no polarisation defined.")
 
     
 
@@ -1115,7 +1115,7 @@ def plot_field(o, component, r1, r2=0, r3=0, filename=0,
         plot_field_section_mode(o,component,r1,r2,filename,colormap,overlay_n,
                                 contour)
     else:
-        print "Unsupported argument for plot_field."
+        print("Unsupported argument for plot_field.")
         
 
 
@@ -1156,7 +1156,7 @@ def animate_field_stack(stack, component, r_x, r_z, r_y = 0, filename=0,
     except TypeError:
       rzrange = True
     if rxrange and ryrange and rzrange:
-      print "Error: plot_n_stack can only make cross sections"
+      print("Error: plot_n_stack can only make cross sections")
 
     f = np.zeros([len(ax1),len(ax2)], complex)
     if rzrange:
@@ -1241,7 +1241,7 @@ def animate_field(o, component, r1, r2, r3=0, filename=0, overlay_n=1,
         animate_field_section_mode(o,component,r1,r2,filename,
                                    overlay_n,contour)
     else:
-        print "Unsupported argument for animate_field."
+        print("Unsupported argument for animate_field.")
 
 
 

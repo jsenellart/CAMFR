@@ -16,8 +16,8 @@ class metal_splitter(unittest.TestCase):
         
         """Metal splitter"""
 
-        print
-        print "Running metal splitter..."
+        print()
+        print("Running metal splitter...")
 
         set_lambda(1.5)
         set_N(60)
@@ -60,7 +60,7 @@ class metal_splitter(unittest.TestCase):
  
         arm = Slab(  met(r) + air(a-2*r)                             \
            + sections*(met(2*r) + air(a-2*r))                        \
-	   + air(a)                                                  \
+       + air(a)                                                  \
            + periods*(met(2*r) + air(a-2*r))                         \
            + air(cl) )
 
@@ -92,7 +92,7 @@ class metal_splitter(unittest.TestCase):
         R = splitter.R12(0,0)
         R_OK = 0.844654989543+0.499289083195j
 
-        print R, "expected", R_OK
+        print(R, "expected", R_OK)
         
         R_pass = abs((R - R_OK)/R_OK) < 1000*eps.testing_eps
 

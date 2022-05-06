@@ -15,13 +15,13 @@ class VCSEL(unittest.TestCase):
         
         """VCSEL"""
 
-        print
-        print "Running VCSEL..."
+        print()
+        print("Running VCSEL...")
 
         set_lambda(.980)
         set_N(100)
         set_circ_order(1)
-	set_sweep_from_previous(1)
+        set_sweep_from_previous(1)
         set_circ_PML(-0.1)
 
         # Define materials.
@@ -82,8 +82,8 @@ class VCSEL(unittest.TestCase):
         wavelength_OK = 0.980365834012
         gain_OK = 1182.17331249
 
-        print wavelength, "expected", wavelength_OK
-        print gain, "expected", gain_OK
+        print(wavelength, "expected", wavelength_OK)
+        print(gain, "expected", gain_OK)
 
         wavelength_pass \
           = abs((wavelength - wavelength_OK)/wavelength_OK) < eps.testing_eps

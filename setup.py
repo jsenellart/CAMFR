@@ -41,14 +41,14 @@ class camfr_install_data(install_data):
 
     scripts = []
           
-    for i in self.data_files:
-      for j in i[1]:
-        if j[-2:] == "py":
-          scripts.append(j)
-          i[1].append(j+'c')
+    #for i in self.data_files:
+    #  for j in i[1]:
+    #    if j[-3:] == ".py":
+    #      scripts.append(j)
+    #      i[1].append(j[:-3]+'.cpython-39.pyc')
 
-    byte_compile(scripts)
-      
+    #byte_compile(scripts, verbose=1, force=True)
+
     # Change install dir to library dir.
     
     install_cmd = self.get_finalized_command('install')
@@ -84,6 +84,7 @@ setup(name         = "camfr",
                              "visualisation/slab_plot.py",
                              "visualisation/stack_plot.py",
                              "visualisation/TkPlotCanvas.py",
+                             "visualisation/section_matplotlib.py",
                              "visualisation/matrix_plot_canvas.py",
                              "visualisation/gifmaker.py"])] + extra_files,
       cmdclass     = {"install_data" : camfr_install_data,

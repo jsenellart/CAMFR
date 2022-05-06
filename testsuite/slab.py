@@ -15,9 +15,9 @@ class slab(unittest.TestCase):
 
         """Slab"""
 
-        print
-        print "Running slab..."
-	
+        print()
+        print("Running slab...")
+    
         set_lambda(1.56)
         set_N(75)
         set_mode_surplus(2)
@@ -32,9 +32,9 @@ class slab(unittest.TestCase):
         s.calc()
 
         n = s.mode(74).n_eff()
-	n_OK = 0.0130942-2.94038j
-	
-        print n, "expected", n_OK
+        n_OK = 0.0130942-2.94038j
+    
+        print(n, "expected", n_OK)
         n_pass = abs((n - n_OK) / n_OK) < eps.testing_eps
 
         free_tmps()

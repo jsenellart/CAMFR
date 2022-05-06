@@ -280,7 +280,7 @@ def triangular_lattice_circles_GM(slices,waveguides,ambient,rod,r,a,xz):
 
             if lower and upper:
                 part = Slab(rod(x_lower)+ambient(x_max-x_lower-x_upper)+rod(x_upper))
-	 
+     
             if not lower and not upper:
                 part = Slab(ambient(x_max))
                 
@@ -362,7 +362,7 @@ def triangular_lattice_circles_GK(slices,waveguides,ambient,rod,r,a,xz):
 
             if lower and upper:
                 part = Slab(rod(x_lower)+ambient(x_max-x_lower-x_upper)+rod(x_upper))
-	 
+     
             if not lower and not upper:
                 part = Slab(ambient(x_max))
 
@@ -444,7 +444,7 @@ def triangular_lattice_squares_GM(slices,waveguides,ambient,rod,r,a,xz):
 
             if lower and upper:
                 part = Slab(rod(x_lower)+ambient(x_max-x_lower-x_upper)+rod(x_upper))
-	 
+     
             if not lower and not upper:
                 part = Slab(ambient(x_max))
 
@@ -585,6 +585,6 @@ def flip_k(k,xz,a,mode):
     if h1dp<h1d:
         k = 2.*pi/a/ratio-k
 
-    print "RATIO = ",ratio
+    print("RATIO = ",ratio)
         
     return k

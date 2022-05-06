@@ -9,7 +9,6 @@ test: FORCE
 
 distrib:
 	rm -f *.tgz Exclude
-	cd docs ; make pdf
 	rm -f -r dist ../camfr_dist camfr_dist camfr_*
 	mkdir ../camfr_dist
 	cp -r * ../camfr_dist
@@ -18,7 +17,6 @@ distrib:
 	rm camfr_dist/machine_cfg.py camfr_dist/TODO
 	rm -r camfr_dist/visualisation/examples
 	rm -r camfr_dist/docs/*
-	cp docs/camfr.pdf camfr_dist/docs
 	V=`python camfrversion.py` && mv camfr_dist camfr_$${V}
 	V=`python camfrversion.py` && find camfr_$${V} -type d -print | egrep '/,|%$$|~$$|CVS|build' > Exclude
 	V=`python camfrversion.py` && find camfr_$${V} ! -type d -print | egrep '/,|%$$|\#|~$$|dblite|pyc|\.old$$|/core$$|\.orig$$' >> Exclude

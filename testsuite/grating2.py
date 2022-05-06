@@ -15,8 +15,8 @@ class grating2(unittest.TestCase):
 
         """Grating 2"""
 
-        print
-        print "Running grating 2..."
+        print()
+        print("Running grating 2...")
 
         set_polarisation(TE)
         set_lambda(.84)
@@ -45,10 +45,10 @@ class grating2(unittest.TestCase):
 
         if groove_depth < d_guide:
             etched = Slab(substrate(d_sub) + guiding(d_guide - groove_depth) \
-			  + air(groove_depth + d_air))
+    		  + air(groove_depth + d_air))
         else:
             etched = Slab(substrate(d_sub - (groove_depth-d_guide)) \
-			  + air(groove_depth + d_air))
+    		  + air(groove_depth + d_air))
 
         # Define 2D stack.
 
@@ -64,7 +64,7 @@ class grating2(unittest.TestCase):
     
         R = stack.R12(0,0)
         R_OK = 0.415900175747+0.0326513148086j
-        print R, "expected", R_OK
+        print(R, "expected", R_OK)
         R_pass = abs((R - R_OK) / R_OK) < eps.testing_eps
 
         free_tmps()

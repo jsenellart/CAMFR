@@ -24,9 +24,9 @@ def index(x):
     a = 0.1      # slope
     n = max_n - a * pow(w / 2.0 - x, 2)
     if n < 1:
-	return 1
+        return 1
     else:
-	return n
+        return n
 
 # Construct a staircase approximation.
 
@@ -49,6 +49,6 @@ outfile = file("tutorial7.out",'w')
 steps2 = 100
 for i in range(steps2):
     x = i * w / steps2
-    print >> outfile, x, index(x), slab.n(Coord(x, 0, 0)).real
+    outfile.write("%f %f %f" % (x, index(x), slab.n(Coord(x, 0, 0)).real))
 
 outfile.close()

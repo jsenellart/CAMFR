@@ -7,7 +7,7 @@
 # Ports+variants to install via MacPorts (and @version used in this build):
 #   py27-spyder @2.3.8_0
 #   py27-Pillow @3.2.0_0 (replaces PIL)
-#   blitz @0.10_4+gcc5
+#   blitz@0.10_4+gcc5
 #   boost @1.66.0_0+no_single+no_static+python27
 #   lapack @3.7.1_0+gfortran
 #   llvm-3.3 @3.3_10
@@ -44,26 +44,22 @@ base_flags = " -DFORTRAN_SYMBOLS_WITH_DOUBLE_TRAILING_UNDERSCORE -DNDEBUG"
 
 flags_noopt = base_flags
 
-fflags = base_flags + " -march=native -O2 -pipe -fomit-frame-pointer -funroll-loops -fstrict-aliasing -g -fPIC"
-flags = fflags + " -arch x86_64 -ftemplate-depth-60"
+fflags = base_flags + " -O2 -pipe -fomit-frame-pointer -funroll-loops -fstrict-aliasing -g -fPIC"
+flags = fflags + " -ftemplate-depth-60"
 
 # Include directories.
 #   MacPorts directories, MacPorts python2.7
-include_dirs = ["/opt/local/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7", 
-"/opt/local/include",
-"/opt/local/include/boost",
-"/opt/local/include/blitz",
-"/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"]
+include_dirs = ["/opt/local/include",
+                "/opt/homebrew/Cellar//boost/1.78.0_1/include/",
+                "/opt/homebrew/Cellar/blitz/1.0.2/include/",
+                "/Users/senellart/.pyenv/versions/3.9.11/include/python3.9", "/Users/senellart/DEV/CAMFR/venv/lib/python3.9/site-packages"]
 
-#   MacPorts directories
-library_dirs = ["/opt/local/lib/",
-"/opt/local/lib/lapack/",
-"/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A",
-"/opt/local/lib/gcc5/"]
-
+library_dirs = [ "/opt/homebrew/Cellar//boost/1.78.0_1/lib", "/opt/homebrew/Cellar/boost-python3/1.78.0/lib",
+                 "/opt/homebrew/Cellar/blitz/1.0.2/lib","/opt//homebrew/Cellar/gcc/11.3.0/lib/gcc/11/"
+              ]
 
 # Library names.
-libs = ["libboost_python-mt", "libblitz", "liblapack","libblas","gfortran"]
+libs = ["libboost_python39", "libblitz", "liblapack","libblas","gfortran"]
 
 
 # Command to strip library of excess symbols:
@@ -72,4 +68,4 @@ strip_command = ""#"strip --strip-unneeded camfr/_camfr" + dllsuffix
 
 # Extra files to copy into installation directory.
 #   This PDF should be Built first or the command will fail.
-extra_files = [("doc", ["docs/camfr.pdf"])]
+extra_files = [] # ("doc", ["docs/camfr.pdf"])]

@@ -15,8 +15,8 @@ class ADR_solver(unittest.TestCase):
         
         """ADR solver"""
 
-        print
-        print "Running ADR solver..."
+        print()
+        print("Running ADR solver...")
         
         set_solver(ADR)
         set_N(10)
@@ -30,15 +30,15 @@ class ADR_solver(unittest.TestCase):
         InGaAsP_1_55 = Material(3.61)
 
         s_ADR = Slab(InP(1.5) + InGaAsP_1_25(0.1) + InGaAsP_1_55(.15)    \
-		     + InGaAsP_1_25(0.1)                                 \
-		     + InP(0.5) + InGaAs(0.05) + FeCo(0.05))
+    	     + InGaAsP_1_25(0.1)                                 \
+    	     + InP(0.5) + InGaAs(0.05) + FeCo(0.05))
 
         s_ADR.calc()
 
         n_eff_0    = s_ADR.mode(0).n_eff()
         n_eff_0_OK = 3.51054-0.349863j
 
-        print n_eff_0, "expected", n_eff_0_OK
+        print(n_eff_0, "expected", n_eff_0_OK)
         mode0_pass = abs((n_eff_0 - n_eff_0_OK)/n_eff_0_OK) < eps.testing_eps
         
         free_tmps()

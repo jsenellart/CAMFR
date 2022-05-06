@@ -10,6 +10,8 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+#pragma GCC diagnostic ignored "-Wreturn-type"
+
 #include <boost/python.hpp>
 #include "numpy/core/include/numpy/arrayobject.h"
 
