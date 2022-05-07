@@ -10,8 +10,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
-#pragma GCC diagnostic ignored "-Wreturn-type"
-
 #include <boost/python.hpp>
 #include "numpy/core/include/numpy/arrayobject.h"
 
@@ -579,8 +577,9 @@ BOOST_PYTHON_MODULE(_camfr)
   implicitly_convertible<Scatterer,Term>();
   implicitly_convertible<Stack,Term>();
 
-  import_array();
-
+  // import_array();
+  {if (_import_array() < 0) {PyErr_Print(); PyErr_SetString(PyExc_ImportError, "numpy.core.multiarray failed to import"); }}
+  
   to_python_converter<cVector, cVector_to_python>();
   to_python_converter<cMatrix, cMatrix_to_python>();
   register_cVector_from_python();

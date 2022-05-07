@@ -72,7 +72,7 @@ class PhC_splitter(unittest.TestCase):
 
         while wg.mode(guided).kz().real <= 0:
             guided += 1
-        for i in arange(guided,2*N()):
+        for i in range(guided,2*N()):
             if (abs(wg.mode(i).kz().imag) < abs(wg.mode(guided).kz().imag)):
                 if wg.mode(i).kz().real > 0:
                     guided = i
